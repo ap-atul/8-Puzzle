@@ -31,6 +31,15 @@ class Board:
             string = string + ('+----' * self.n) + '+' + '\n'
         return string
 
+    def __eq__(self, other):
+        if other is None:
+            return False
+
+        for i in range(self.n * self.n):
+            if self.board[i] != other.board[i]:
+                return False
+        return True
+
     def clone(self):
         """
         making a copy to store the previous and

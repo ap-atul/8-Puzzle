@@ -3,7 +3,7 @@ A* path finding algorithm is used to solve the 8 puzzle problem.
 
 It uses Manhattan distance and Priority queue to get the min distance satisfying move.
 
-Update: No more 8 Puzzle, upgraded to n Puzzle
+Update: No more 8 Puzzle, upgraded to n Puzzle (edit n value in main.py)
 
 ## Execution steps
 1. Clone the repo
@@ -40,7 +40,7 @@ Required a total of 16 steps.
 ## Example
 Using n=5, so 24 Puzzle Problem
 ```
-Solving for
+Solving for .............
 +----+----+----+----+----+
 | 01 | 02 | 03 | 04 | 05 |
 +----+----+----+----+----+
@@ -48,12 +48,16 @@ Solving for
 +----+----+----+----+----+
 | 11 | 12 | 13 | 14 | 15 |
 +----+----+----+----+----+
-| 16 | 17 | 18 | 19 | 20 |
+| 16 | 17 | 18 |    | 20 |
 +----+----+----+----+----+
-| 21 | 22 | 23 |    | 24 |
+| 21 | 22 | 23 | 19 | 24 |
 +----+----+----+----+----+
 
-
+**************************************
+Algorithm name :: A star
+Total optimal moves to solve :: 2
+Total steps required to get to Goal :: 7
+Time required to find the Goal state :: 0.0 s
 +----+----+----+----+----+
 | 01 | 02 | 03 | 04 | 05 |
 +----+----+----+----+----+
@@ -66,7 +70,43 @@ Solving for
 | 21 | 22 | 23 | 24 |    |
 +----+----+----+----+----+
 
-Required a total of 1 steps.
+**************************************
+**************************************
+Algorithm name :: BFS
+Total optimal moves to solve :: 2
+Total steps required to get to Goal :: 37
+Time required to find the Goal state :: 0.002 s
++----+----+----+----+----+
+| 01 | 02 | 03 | 04 | 05 |
++----+----+----+----+----+
+| 06 | 07 | 08 | 09 | 10 |
++----+----+----+----+----+
+| 11 | 12 | 13 | 14 | 15 |
++----+----+----+----+----+
+| 16 | 17 | 18 | 19 | 20 |
++----+----+----+----+----+
+| 21 | 22 | 23 | 24 |    |
++----+----+----+----+----+
+
+**************************************
+**************************************
+Algorithm name :: DFS
+Total optimal moves to solve :: 2
+Total steps required to get to Goal :: 8
+Time required to find the Goal state :: 0.0 s
++----+----+----+----+----+
+| 01 | 02 | 03 | 04 | 05 |
++----+----+----+----+----+
+| 06 | 07 | 08 | 09 | 10 |
++----+----+----+----+----+
+| 11 | 12 | 13 | 14 | 15 |
++----+----+----+----+----+
+| 16 | 17 | 18 | 19 | 20 |
++----+----+----+----+----+
+| 21 | 22 | 23 | 24 |    |
++----+----+----+----+----+
+
+**************************************
 
 ```
 
