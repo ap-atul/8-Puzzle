@@ -1,9 +1,27 @@
 # 8 Puzzle Problem Solution using A*
-A* path finding algorithm is used to solve the 8 puzzle problem.
 
-It uses Manhattan distance and Priority queue to get the min distance satisfying move.
+* A*
+    A* path finding algorithm is used to solve the 8 puzzle problem.
+    
+    It uses Manhattan distance and Priority queue to get the min distance satisfying the move.
+    
+    Update: No more 8 Puzzle, upgraded to n Puzzle (edit n value in main.py)
+    
+    Evaluation function f(node) to order its search
+    ```
+    f(n) = Estimation cost of a path from Start to Goal via node n
+    f(n) = g(n) + h(n)
+    Here,
+      g(n) : backward looking (how far are we from start) [in code no of move; look at Board.move]
+      h(n) : forward looking (how far we need to go) [in code; Manhattan distance]
+      f(n) : complete estimation [in code; getPriority(); look at Board.getPriority()]
+    ```
 
-Update: No more 8 Puzzle, upgraded to n Puzzle (edit n value in main.py)
+* BFS
+    Using Queue
+   
+* DFS
+    Using LifoQueue (stack)
 
 ## Execution steps
 1. Clone the repo
@@ -35,7 +53,7 @@ Solving for
 Required a total of 16 steps.
 
 ```
-3. You can create your one test cases to check
+3. You can create your own test cases to check
 
 ## Example
 Using n=5, so 24 Puzzle Problem
@@ -111,4 +129,4 @@ Time required to find the Goal state :: 0.0 s
 ```
 
 ## Error
-If you occurred on a test case that does not solved by the code and is possible to solve, then raise an issue
+If you occurred on a test case that is not solved by the code, then raise an issue
