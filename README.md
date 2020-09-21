@@ -1,7 +1,7 @@
 # 8 Puzzle Problem Solution using A*
 A* path finding algorithm is used to solve the 8 puzzle problem.
 
-It uses Manhattan distance and Priority queue to get the min distance satisfying move.
+It uses Manhattan distance and Priority queue to get the min distance satisfying the move.
 
 ## Execution steps
 1. Clone the repo
@@ -33,7 +33,7 @@ Solving for
 Required a total of 16 steps.
 
 ```
-3. You can create your one test cases to check
+3. You can create your own test cases to check
 
 ## Error
-If you occurred on a test case that does not solved by the code and is possible to solve, then raise an issue
+If you occurred on a test case that is not solved by the code, then raise an issue
