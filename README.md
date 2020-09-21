@@ -23,6 +23,12 @@
 * DFS
     Using LifoQueue (stack)
 
+
+* NOTE : PuzzleSolver.solve takes in one positional argument
+goalState (bool) if it is set to True, the start 
+function will read the Goal State
+else it will create a default Goal State
+
 ## Execution steps
 1. Clone the repo
 ```
@@ -54,9 +60,11 @@ Required a total of 16 steps.
 
 ```
 3. You can create your own test cases to check
+4. Pass in the input board and later the goal board
+5. Specify n value for Solver object as per your choice
 
 ## Example
-Using n=5, so 24 Puzzle Problem
+### Using n=5, so 24 Puzzle Problem
 ```
 Solving for .............
 +----+----+----+----+----+
@@ -123,6 +131,72 @@ Time required to find the Goal state :: 0.0 s
 +----+----+----+----+----+
 | 21 | 22 | 23 | 24 |    |
 +----+----+----+----+----+
+
+**************************************
+
+```
+
+### Using custom goal state n=3 goalState=True 
+
+```
+Start State .............
++----+----+----+
+| 08 | 07 | 06 |
++----+----+----+
+|    | 05 | 04 |
++----+----+----+
+| 03 | 02 | 01 |
++----+----+----+
+
+Goal State ..............
++----+----+----+
+|    | 08 | 07 |
++----+----+----+
+| 06 | 05 | 04 |
++----+----+----+
+| 03 | 02 | 01 |
++----+----+----+
+
+**************************************
+Algorithm name :: A star
+Total optimal moves to solve :: 13
+Total steps required to get to Goal :: 1022
+Time required to find the Goal state :: 0.039 s
++----+----+----+
+|    | 08 | 07 |
++----+----+----+
+| 06 | 05 | 04 |
++----+----+----+
+| 03 | 02 | 01 |
++----+----+----+
+
+**************************************
+**************************************
+Algorithm name :: BFS
+Total optimal moves to solve :: 13
+Total steps required to get to Goal :: 4366
+Time required to find the Goal state :: 10.451 s
++----+----+----+
+|    | 08 | 07 |
++----+----+----+
+| 06 | 05 | 04 |
++----+----+----+
+| 03 | 02 | 01 |
++----+----+----+
+
+**************************************
+**************************************
+Algorithm name :: DFS
+Total optimal moves to solve :: 4831
+Total steps required to get to Goal :: 8809
+Time required to find the Goal state :: 50.325 s
++----+----+----+
+|    | 08 | 07 |
++----+----+----+
+| 06 | 05 | 04 |
++----+----+----+
+| 03 | 02 | 01 |
++----+----+----+
 
 **************************************
 

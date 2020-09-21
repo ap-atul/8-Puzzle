@@ -6,7 +6,7 @@ cycle
 
 
 class Board:
-    def __init__(self, board, move=0, previous=None, n=3):
+    def __init__(self, board, goalState=None, move=0, previous=None, n=3):
         """
         board is a list
         move no of total moves to solve
@@ -16,6 +16,19 @@ class Board:
         self.move = move
         self.previous = previous
         self.n = n
+        self.goalState = list()
+
+        # if goal state is not specified it will populate in increasing manner
+        # Example with n = 3
+        # 1  2  3
+        # 4  5  6
+        # 7  8  0
+        if goalState is None:
+            for i in range(1, self.n * self.n):
+                self.goalState.append(i)
+            self.goalState.append(0)
+        else:
+            self.goalState = goalState
 
     def __str__(self):
         """
@@ -45,7 +58,7 @@ class Board:
         making a copy to store the previous and
         increment the moves
         """
-        return Board(self.board.copy(), self.move + 1, previous=self, n=self.n)
+        return Board(self.board.copy(), goalState=self.goalState, move=self.move + 1, previous=self, n=self.n)
 
     def getBlank(self):
         """
@@ -132,7 +145,7 @@ class Board:
         """
         for i in range(0, self.n * self.n):
             if i != self.n * self.n - 1:
-                if self.board[i] != i + 1:
+                if self.board[i] != self.goalState[i]:
                     return False
         return True
 
@@ -143,7 +156,7 @@ class Board:
         manhattan = 0
 
         for i in range(0, self.n * self.n):
-            if self.board[i] != i + 1 and self.board[i] != 0:
+            if self.board[i] != self.goalState[i] and self.board[i] != 0:
                 position = self.n - 1 if self.board[i] == 0 else self.board[i] - 1
                 sRow = int(i / self.n)
                 sCol = i % self.n

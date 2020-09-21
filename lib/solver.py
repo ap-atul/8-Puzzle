@@ -20,6 +20,7 @@ class PuzzleSolver:
         """
         self.boardList = []
         self.n = n
+        self.goalState = None
 
     def solveAStart(self):
         """
@@ -29,10 +30,13 @@ class PuzzleSolver:
         solved
         """
         startTime = time.time()
-        board = Board(self.boardList, n=self.n)
-
-        print("Solving for .............")
+        board = Board(self.boardList, goalState=self.goalState, n=self.n)
+        print("Start State .............")
         print(board)
+
+        goal = Board(board.goalState, goalState=None, n=self.n)
+        print("Goal State ..............")
+        print(goal)
 
         queue = PriorityQueue()
         queue.put(board.getPriority(0))
@@ -51,7 +55,7 @@ class PuzzleSolver:
 
     def solveBFS(self):
         startTime = time.time()
-        board = Board(self.boardList, n=self.n)
+        board = Board(self.boardList, goalState=self.goalState, n=self.n)
 
         visited = list()
         queue = Queue()
@@ -72,7 +76,7 @@ class PuzzleSolver:
 
     def solveDFS(self):
         startTime = time.time()
-        board = Board(self.boardList, n=self.n)
+        board = Board(self.boardList, goalState=self.goalState, n=self.n)
 
         visited = list()
         queue = LifoQueue()
@@ -91,13 +95,22 @@ class PuzzleSolver:
                 self.analytics("DFS", board.move, i, time.time() - startTime, board)
                 return
 
-    def start(self):
+    def start(self, goalState=False):
         """
-            reading input of no 0- n * n
-            0 representing the space tile.
-            """
+        if goal state is false, it will create a default state
+        else the output will be as per the goal state
+        goalState : bool
+        """
+        # print("Enter input board")
         for i in range(0, self.n * self.n):
             self.boardList.append(int(input()))
+
+        if goalState:
+            self.goalState = []
+            # print("Enter goal board (including space)")
+            for i in range(0, self.n * self.n):
+                self.goalState.append(int(input()))
+
         return self
 
     def analytics(self, method, moves, steps, executionTime, board):
