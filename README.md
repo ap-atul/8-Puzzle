@@ -11,6 +11,27 @@ $ git clone https://github.com/AP-Atul/8-Puzzle.git
 2. Run the main python file
 ```
 $ python main.py < in.txt
+
+Solving for
++---+---+---+
+| 1 | 2 | 3 |
++---+---+---+
+| 5 | 6 | 4 |
++---+---+---+
+|   | 7 | 8 |
++---+---+---+
+
+
++---+---+---+
+| 1 | 2 | 3 |
++---+---+---+
+| 4 | 5 | 6 |
++---+---+---+
+| 7 | 8 |   |
++---+---+---+
+
+Required a total of 16 steps.
+
 ```
 3. You can create your one test cases to check
 

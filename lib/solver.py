@@ -26,8 +26,10 @@ class PuzzleSolver:
         Queue picks small distances and puzzle is
         solved
         """
-        print("Solving...........")
         board = Board(self.boardList)
+        print("Solving for")
+        print(board)
+        print()
 
         self.queue.put(board.getPriority(0))
         i = 1
