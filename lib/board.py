@@ -6,7 +6,7 @@ cycle
 
 
 class Board:
-    def __init__(self, board, move=0, previous=None):
+    def __init__(self, board, move=0, previous=None, n=3):
         """
         board is a list
         move no of total moves to solve
@@ -15,19 +15,20 @@ class Board:
         self.board = board
         self.move = move
         self.previous = previous
+        self.n = n
 
     def __str__(self):
         """
         fancy printing on the terminal for board
         """
         string = ''
-        string = string + '+---+---+---+\n'
-        for i in range(3):
-            for j in range(3):
-                tile = self.board[i * 3 + j]
-                string = string + '| {} '.format(' ' if tile == 0 else tile)
+        string = string + ('+----' * self.n) + '+' + '\n'
+        for i in range(self.n):
+            for j in range(self.n):
+                tile = self.board[i * self.n + j]
+                string = string + '| {} '.format('  ' if tile == 0 else str(tile).zfill(2))
             string = string + '|\n'
-            string = string + '+---+---+---+\n'
+            string = string + ('+----' * self.n) + '+' + '\n'
         return string
 
     def clone(self):
@@ -35,7 +36,7 @@ class Board:
         making a copy to store the previous and
         increment the moves
         """
-        return Board(self.board.copy(), self.move + 1, previous=self)
+        return Board(self.board.copy(), self.move + 1, previous=self, n=self.n)
 
     def getBlank(self):
         """
@@ -57,28 +58,28 @@ class Board:
         blank = self.getBlank()
 
         if direction == "LEFT":
-            if blank % 3 != 0:
-                col = (blank % 3) - 1
-                row = int(blank / 3)
-                self.swap(row * 3 + col, blank)
+            if blank % self.n != 0:
+                col = (blank % self.n) - 1
+                row = int(blank / self.n)
+                self.swap(row * self.n + col, blank)
 
         if direction == "RIGHT":
-            if blank % 3 != 2:
-                col = (blank % 3) + 1
-                row = int(blank / 3)
-                self.swap(row * 3 + col, blank)
+            if blank % self.n != self.n - 1:
+                col = (blank % self.n) + 1
+                row = int(blank / self.n)
+                self.swap(row * self.n + col, blank)
 
         if direction == "UP":
-            if int(blank / 3) != 0:
-                col = (blank % 3)
-                row = int(blank / 3) - 1
-                self.swap(row * 3 + col, blank)
+            if int(blank / self.n) != 0:
+                col = (blank % self.n)
+                row = int(blank / self.n) - 1
+                self.swap(row * self.n + col, blank)
 
         if direction == "DOWN":
-            if int(blank / 3) != 2:
-                col = (blank % 3)
-                row = int(blank / 3) + 1
-                self.swap(row * 3 + col, blank)
+            if int(blank / self.n) != self.n - 1:
+                col = (blank % self.n)
+                row = int(blank / self.n) + 1
+                self.swap(row * self.n + col, blank)
 
     def getNeighbours(self):
         """
@@ -91,25 +92,25 @@ class Board:
         neighbours = []
 
         # left?
-        if blank % 3 != 0:
+        if blank % self.n != 0:
             newBoard = self.clone()
             newBoard.moveBlank('LEFT')
             neighbours.append(newBoard)
 
         # right?
-        if blank % 3 != 2:
+        if blank % self.n != self.n - 1:
             newBoard = self.clone()
             newBoard.moveBlank('RIGHT')
             neighbours.append(newBoard)
 
         # up?
-        if int(blank / 3) != 0:
+        if int(blank / self.n) != 0:
             newBoard = self.clone()
             newBoard.moveBlank('UP')
             neighbours.append(newBoard)
 
         # down?
-        if int(blank / 3) != 2:
+        if int(blank / self.n) != self.n - 1:
             newBoard = self.clone()
             newBoard.moveBlank('DOWN')
             neighbours.append(newBoard)
@@ -120,8 +121,8 @@ class Board:
         """
         check if we have reached the goal state
         """
-        for i in range(0, 9):
-            if i != 8:
+        for i in range(0, self.n * self.n):
+            if i != self.n * self.n - 1:
                 if self.board[i] != i + 1:
                     return False
         return True
@@ -132,13 +133,13 @@ class Board:
         """
         manhattan = 0
 
-        for i in range(0, 9):
+        for i in range(0, self.n * self.n):
             if self.board[i] != i + 1 and self.board[i] != 0:
-                position = 8 if self.board[i] == 0 else self.board[i] - 1
-                sRow = int(i / 3)
-                sCol = i % 3
-                dRow = int(position / 3)
-                dCol = position % 3
+                position = self.n - 1 if self.board[i] == 0 else self.board[i] - 1
+                sRow = int(i / self.n)
+                sCol = i % self.n
+                dRow = int(position / self.n)
+                dCol = position % self.n
                 manhattan += abs(sRow - dRow) + abs(sCol - dCol)
 
         return manhattan

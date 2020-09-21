@@ -3,6 +3,8 @@ A* path finding algorithm is used to solve the 8 puzzle problem.
 
 It uses Manhattan distance and Priority queue to get the min distance satisfying move.
 
+Update: No more 8 Puzzle, upgraded to n Puzzle
+
 ## Execution steps
 1. Clone the repo
 ```
@@ -34,6 +36,39 @@ Required a total of 16 steps.
 
 ```
 3. You can create your one test cases to check
+
+## Example
+Using n=5, so 24 Puzzle Problem
+```
+Solving for
++----+----+----+----+----+
+| 01 | 02 | 03 | 04 | 05 |
++----+----+----+----+----+
+| 06 | 07 | 08 | 09 | 10 |
++----+----+----+----+----+
+| 11 | 12 | 13 | 14 | 15 |
++----+----+----+----+----+
+| 16 | 17 | 18 | 19 | 20 |
++----+----+----+----+----+
+| 21 | 22 | 23 |    | 24 |
++----+----+----+----+----+
+
+
++----+----+----+----+----+
+| 01 | 02 | 03 | 04 | 05 |
++----+----+----+----+----+
+| 06 | 07 | 08 | 09 | 10 |
++----+----+----+----+----+
+| 11 | 12 | 13 | 14 | 15 |
++----+----+----+----+----+
+| 16 | 17 | 18 | 19 | 20 |
++----+----+----+----+----+
+| 21 | 22 | 23 | 24 |    |
++----+----+----+----+----+
+
+Required a total of 1 steps.
+
+```
 
 ## Error
 If you occurred on a test case that does not solved by the code and is possible to solve, then raise an issue

@@ -12,12 +12,13 @@ So moves are picked directly by Queue.
 
 
 class PuzzleSolver:
-    def __init__(self):
+    def __init__(self, n=3):
         """
         initializing the queue and board
         """
         self.boardList = []
         self.queue = PriorityQueue()
+        self.n = n
 
     def solve(self):
         """
@@ -26,7 +27,7 @@ class PuzzleSolver:
         Queue picks small distances and puzzle is
         solved
         """
-        board = Board(self.boardList)
+        board = Board(self.boardList, n=self.n)
         print("Solving for")
         print(board)
         print()
@@ -48,9 +49,9 @@ class PuzzleSolver:
 
     def start(self):
         """
-        reading input of no 0-8
+        reading input of no 0- n * n
         0 representing the space tile.
         """
-        for i in range(0, 9):
+        for i in range(0, self.n * self.n):
             self.boardList.append(int(input()))
         return self
