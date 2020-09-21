@@ -3,6 +3,15 @@ A* path finding algorithm is used to solve the 8 puzzle problem.
 
 It uses Manhattan distance and Priority queue to get the min distance satisfying the move.
 
+Evaluation function f(node) to order its search
+```
+f(n) = Estimation cost of a path from Start to Goal via node n
+f(n) = g(n) + h(n)
+Here,
+  g(n) : backward looking (how far are we from start) [in code no of move; look at Board.move]
+  h(n) : forward looking (how far we need to go) [in code; Manhattan distance]
+  f(n) : complete estimation [in code; getPriority(); look at Board.getPriority()]
+```
 ## Execution steps
 1. Clone the repo
 ```
