@@ -1,7 +1,7 @@
 import time
+from queue import PriorityQueue, Queue, LifoQueue
 
 from lib.board import Board
-from queue import PriorityQueue, Queue, LifoQueue
 
 """
 Solver class that takes in Board and perform 
@@ -16,7 +16,25 @@ So moves are picked directly by Queue.
 class PuzzleSolver:
     def __init__(self, n=3):
         """
-        initializing the queue and board
+        Solver class to solve for 3 algorithms
+
+            'A*' : A start using Priority Queue
+            'BFS' : Breadth first search using Queue FIFO
+            'DFS' : Depth first search using Queue LIFO
+
+        Parameters
+        ----------
+        n : int, default=3
+            dimension of board
+
+        Attributes
+        ----------
+        boardList : list
+            initial list of Start state numbers
+        n : int
+            dimension of board
+        goalState : list, optional
+            goal state of the board
         """
         self.boardList = []
         self.n = n
@@ -24,7 +42,7 @@ class PuzzleSolver:
 
     def solveAStart(self):
         """
-        main solve function, read the neighbours
+        Solve function, read the neighbours
         append the dist and moves to the queue
         Queue picks small distances and puzzle is
         solved
@@ -54,6 +72,9 @@ class PuzzleSolver:
                 return
 
     def solveBFS(self):
+        """
+        Solve function for BFS algorithm
+        """
         startTime = time.time()
         board = Board(self.boardList, goalState=self.goalState, n=self.n)
 
@@ -75,6 +96,9 @@ class PuzzleSolver:
                 return
 
     def solveDFS(self):
+        """
+        Solve function for DFS algorithm
+        """
         startTime = time.time()
         board = Board(self.boardList, goalState=self.goalState, n=self.n)
 
@@ -99,7 +123,11 @@ class PuzzleSolver:
         """
         if goal state is false, it will create a default state
         else the output will be as per the goal state
+
+        Parameters
+        ----------
         goalState : bool
+            if goalState is True, then the function will read the Goal State
         """
         # print("Enter input board")
         for i in range(0, self.n * self.n):
@@ -114,6 +142,26 @@ class PuzzleSolver:
         return self
 
     def analytics(self, method, moves, steps, executionTime, board):
+        """
+        Printing final analytics for the algorithm
+
+        Parameters
+        ----------
+        method : str
+            name of the algorithm
+        moves : int
+            number of moves required
+        steps : int
+            number of sequences solved / visited
+        executionTime : float
+            time required to get to the goal state in secs
+        board : object
+            final board
+
+        Returns
+        -------
+
+        """
         print("**************************************")
         print(f"Algorithm name :: {method}")
         print(f"Total optimal moves to solve :: {moves}")

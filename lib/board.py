@@ -8,9 +8,25 @@ cycle
 class Board:
     def __init__(self, board, goalState=None, move=0, previous=None, n=3):
         """
-        board is a list
-        move no of total moves to solve
-        previous the state of board before moves
+        Board is structure that stores the current board config
+
+        Determines the structure after some move is performed (left, right, up, down). Keeps track of the board
+        structure currently
+
+        Note: 0 is used to represent space
+
+        Parameters
+        ----------
+        board : list
+            list of numbers ranging from 0 - (n - 1). Starting state for the puzzle
+        goalState : list, optional
+            Goal state for the puzzle, if not provided a default list is created with 0 at end
+        move : int
+            initiallly moves are 0, later increases as new sequences are generated
+        previous : object
+            previous state of board, useful to avoid cycles
+        n : int
+            dimension of the board is n is 3, then board is 3x3 with 0-8 nos
         """
         self.board = board
         self.move = move
@@ -45,6 +61,19 @@ class Board:
         return string
 
     def __eq__(self, other):
+        """
+        checking equality of two boards
+
+        Parameters
+        ----------
+        other : object
+            board to compare with
+
+        Returns
+        -------
+        equal : bool
+            True meaning both board are equal or not
+        """
         if other is None:
             return False
 
@@ -68,7 +97,21 @@ class Board:
 
     def swap(self, source, destination):
         """
-        swap space with tile selected
+        Swaps the two values of the board
+
+        Parameters
+        ----------
+        source : int
+            index of source number
+        destination : int
+            index of destination number
+
+        Returns
+        -------
+        source : int
+            new source number
+        destination : int
+            ne destination number
         """
         self.board[source], self.board[destination] = self.board[destination], self.board[source]
 
@@ -168,6 +211,16 @@ class Board:
 
     def getPriority(self, count):
         """
-        higher priority mean max no of distance
+        Returns tuple with heuristic value + distance. Used to create the priority queue entry
+
+        Parameters
+        ----------
+        count : index of board
+
+        Returns
+        -------
+        tuple
+            priority , index, board object
+
         """
         return self.move + self.manhattan(), count, self

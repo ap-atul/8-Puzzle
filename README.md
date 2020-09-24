@@ -1,4 +1,5 @@
 # 8 Puzzle Problem Solution using A*
+- For more detailed documentation check ```docs/```
 
 * A*
     A* path finding algorithm is used to solve the 8 puzzle problem.
