@@ -2,6 +2,7 @@
 - For more detailed documentation check ```docs/```
 
 * A*
+
     A* path finding algorithm is used to solve the 8 puzzle problem.
     
     It uses Manhattan distance and Priority queue to get the min distance satisfying the move.

@@ -17,12 +17,12 @@ class Board:
 
         Parameters
         ----------
-        board : list
+        board : iterable
             list of numbers ranging from 0 - (n - 1). Starting state for the puzzle
-        goalState : list, optional
+        goalState : iterable, optional
             Goal state for the puzzle, if not provided a default list is created with 0 at end
         move : int
-            initiallly moves are 0, later increases as new sequences are generated
+            initially moves are 0, later increases as new sequences are generated
         previous : object
             previous state of board, useful to avoid cycles
         n : int
@@ -66,7 +66,7 @@ class Board:
 
         Parameters
         ----------
-        other : object
+        other : Board
             board to compare with
 
         Returns

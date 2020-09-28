@@ -14,28 +14,30 @@ So moves are picked directly by Queue.
 
 
 class PuzzleSolver:
+    """
+    Solver class to solve for 3 algorithms
+
+        'A*' : A start using Priority Queue
+        'BFS' : Breadth first search using Queue FIFO
+        'DFS' : Depth first search using Queue LIFO
+
+    Parameters
+    ----------
+    n : int, default=3
+        dimension of board
+
+    Attributes
+    ----------
+    boardList : list
+        initial list of Start state numbers
+    n : int
+        dimension of board
+    goalState : list, optional
+        goal state of the board
+    """
+
     def __init__(self, n=3):
-        """
-        Solver class to solve for 3 algorithms
 
-            'A*' : A start using Priority Queue
-            'BFS' : Breadth first search using Queue FIFO
-            'DFS' : Depth first search using Queue LIFO
-
-        Parameters
-        ----------
-        n : int, default=3
-            dimension of board
-
-        Attributes
-        ----------
-        boardList : list
-            initial list of Start state numbers
-        n : int
-            dimension of board
-        goalState : list, optional
-            goal state of the board
-        """
         self.boardList = []
         self.n = n
         self.goalState = None
